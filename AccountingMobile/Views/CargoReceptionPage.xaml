@@ -1,0 +1,45 @@
+<?xml version="1.0"
+    encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cc="clr-namespace:AccountingMobile.CustomControls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:entryField="clr-namespace:AccountingMobile.CustomControls.EntryField"
+             x:Class="AccountingMobile.Views.CargoReceptionPage"
+             BackgroundColor="White">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White" 
+                                   StatusBarStyle="DarkContent" />
+    </ContentPage.Behaviors>
+    <Shell.TitleView>
+        <Label Text="Прийом вантажу"
+               FontSize="20"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Padding="18">
+            <cc:TImageButton Source="add.svg"
+                         HorizontalOptions="End"
+                         VerticalOptions="End"
+                         HeightRequest="50"
+                         WidthRequest="50"
+                         Command="{Binding AddNewTypeCommand}"
+                         TintColor="{StaticResource Black}"/>
+            <Grid ColumnDefinitions="*,*"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Start">
+                <Picker Title="Оберіть елемент"
+                        ItemsSource="{Binding Cargos}"
+                        SelectedItem="{Binding SelectedCargo}"
+                        ItemDisplayBinding="{Binding Name}"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center" />
+                <entryField:EntryField Grid.Column="1"
+                       Placeholder="Вага(кг)"
+                       Text="{Binding SelectedItem.Weight}"
+                       InputType="Digit"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

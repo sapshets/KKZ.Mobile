@@ -1,0 +1,65 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AccountingMobile
+build_property.ProjectDir = /home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/CustomControls/EntryField/EntryField.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.CustomControls.EntryField.EntryField.xaml
+build_metadata.AdditionalFiles.TargetPath = CustomControls/EntryField/EntryField.xaml
+build_metadata.AdditionalFiles.RelativePath = CustomControls/EntryField/EntryField.xaml
+
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/Popups/AddItemPopup.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Popups.AddItemPopup.xaml
+build_metadata.AdditionalFiles.TargetPath = Popups/AddItemPopup.xaml
+build_metadata.AdditionalFiles.RelativePath = Popups/AddItemPopup.xaml
+
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Colors.xaml
+
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Styles.xaml
+
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/Views/CargoReceptionPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Views.CargoReceptionPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views/CargoReceptionPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views/CargoReceptionPage.xaml
+
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/Views/ReceiptPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Views.ReceiptPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views/ReceiptPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views/ReceiptPage.xaml

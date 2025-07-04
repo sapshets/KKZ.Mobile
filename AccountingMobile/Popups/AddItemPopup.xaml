@@ -1,0 +1,33 @@
+<?xml version="1.0"
+    encoding="utf-8"?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:entryField="clr-namespace:AccountingMobile.CustomControls.EntryField"
+               x:Class="AccountingMobile.Popups.AddItemPopup">
+    <VerticalStackLayout Padding="20"
+                         BackgroundColor="White">
+        <entryField:EntryField x:Name="NameText"
+                               IsFocused="True"
+                               IsEnabled="True"
+                               Placeholder="Введіть назву"
+                               PlaceholderColor="DarkGray"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Center"/>
+        <Grid ColumnDefinitions="*,*">
+            <Button Grid.Column="0"
+                    Text="Cancel"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Start"
+                    Clicked="Cancel_Clicked"/>
+            <Button Grid.Column="1"
+                    Text="OK"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End"
+                    Clicked="OK_Clicked"/>
+        </Grid>
+    </VerticalStackLayout>
+    
+</toolkit:Popup>

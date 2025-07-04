@@ -1,0 +1,40 @@
+<?xml version="1.0"
+    encoding="utf-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AccountingMobile.CustomControls.EntryField.EntryField"
+             x:Name="EntryFieldRoot">
+    <Grid VerticalOptions="Center">
+        <Border x:Name="InputFieldFrame"
+                Grid.Row="0"
+                Stroke="{Binding BorderColor, Source={x:Reference EntryFieldRoot}}"
+                StrokeThickness="{Binding StrokeThickness, Source={x:Reference EntryFieldRoot}}"
+                BackgroundColor="{Binding BackgroundColor, Source={x:Reference EntryFieldRoot}}"
+                Padding="5">
+            <Entry IsEnabled="False"
+                   BackgroundColor="Transparent"/>
+        </Border>
+        <Label x:Name="Hint"
+               Text="{Binding Placeholder, Source={x:Reference EntryFieldRoot}}"
+               TextColor="{Binding PlaceholderColor, Source={x:Reference EntryFieldRoot}}"
+               FontSize="{Binding FontSize, Source={x:Reference EntryFieldRoot}}"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"
+               HorizontalTextAlignment="Start"
+               TranslationX="0"
+               TranslationY="0"
+               Opacity="1"
+               BackgroundColor="{Binding BackgroundColor, Source={x:Reference EntryFieldRoot}}"
+               Margin="10,0"
+               Padding="5,0"/>
+        <Entry x:Name="InputField"
+               Margin="10,0"
+               VerticalOptions="Center"
+               Text="{Binding Text, Source={x:Reference EntryFieldRoot}}"
+               TextColor="{Binding TextColor, Source={x:Reference EntryFieldRoot}}"
+               FontSize="{Binding FontSize, Source={x:Reference EntryFieldRoot}}"
+               BackgroundColor="Transparent"
+               Focused="InputField_Focused"
+               Unfocused="InputField_Unfocused"/>
+    </Grid>
+</ContentView>
