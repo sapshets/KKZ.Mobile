@@ -36,6 +36,8 @@ public class CargoReceptionVm : BaseVm
         get => _selectedCargo;
         set { _selectedCargo = value; }
     }
+    
+    public string SendedObject { get; set; }
 
     public Command AddNewTypeCommand => new Command(async () =>
     {
@@ -44,6 +46,11 @@ public class CargoReceptionVm : BaseVm
         {
             Cargos.Add(cargo);
         }
+    });
+
+    public Command SendCommand => new Command(() =>
+    {
+        SendedObject = $"Об'єкт надіслано: {SelectedCargo.Name}-{SelectedCargo.Weight}кг";
     });
 
 }

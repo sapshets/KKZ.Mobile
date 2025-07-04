@@ -12,20 +12,25 @@
                                    StatusBarStyle="DarkContent" />
     </ContentPage.Behaviors>
     <Shell.TitleView>
-        <Label Text="Прийом вантажу"
-               FontSize="20"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"/>
+        <Grid ColumnDefinitions="*,Auto,*"
+              Padding="20,0">
+            <Label Grid.Column="1"
+                   Text="Прийом вантажу"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <cc:TImageButton Grid.Column="2"
+                             Source="add.svg"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"
+                             Command="{Binding AddNewTypeCommand}"
+                             TintColor="{StaticResource Black}"/>
+        </Grid>
+        
     </Shell.TitleView>
     <ContentPage.Content>
         <Grid Padding="18">
-            <cc:TImageButton Source="add.svg"
-                         HorizontalOptions="End"
-                         VerticalOptions="End"
-                         HeightRequest="50"
-                         WidthRequest="50"
-                         Command="{Binding AddNewTypeCommand}"
-                         TintColor="{StaticResource Black}"/>
             <Grid ColumnDefinitions="*,*"
                   HorizontalOptions="Fill"
                   VerticalOptions="Start">
@@ -37,9 +42,18 @@
                         VerticalOptions="Center" />
                 <entryField:EntryField Grid.Column="1"
                        Placeholder="Вага(кг)"
-                       Text="{Binding SelectedItem.Weight}"
+                       Text="{Binding SelectedCargo.Weight}"
                        InputType="Digit"/>
             </Grid>
+            <Label Text="{Binding SendedObject}"
+                   TextColor="Black"
+                   FontSize="20"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+            <Button Text="Надіслати"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Command="{Binding SendCommand}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

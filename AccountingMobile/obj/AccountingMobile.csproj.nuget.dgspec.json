@@ -65,6 +65,10 @@
               "target": "Package",
               "version": "[8.0.15, )",
               "autoReferenced": true
+            },
+            "PropertyChanged.Fody": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             }
           },
           "imports": [
