@@ -24,13 +24,17 @@
                              Source="add.svg"
                              HorizontalOptions="End"
                              VerticalOptions="Center"
-                             Command="{Binding AddNewTypeCommand}"
+                             Command="{Binding AddNewItemCommand}"
                              TintColor="{StaticResource Black}"/>
         </Grid>
         
     </Shell.TitleView>
     <ContentPage.Content>
-        <Grid Padding="18">
+        <Grid Padding="18"
+              RowDefinitions="*,auto">
+            <CollectionView ItemTemplate="">
+                
+            </CollectionView>
             <Grid ColumnDefinitions="*,*"
                   HorizontalOptions="Fill"
                   VerticalOptions="Start">
@@ -45,12 +49,7 @@
                        Text="{Binding SelectedCargo.Weight}"
                        InputType="Digit"/>
             </Grid>
-            <Label Text="{Binding SendedObject}"
-                   TextColor="Black"
-                   FontSize="20"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"/>
-            <Button Text="Надіслати"
+            <Button Grid.Row="1" Text="Надіслати"
                     HorizontalOptions="Center"
                     VerticalOptions="End"
                     Command="{Binding SendCommand}"/>

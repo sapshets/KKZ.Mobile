@@ -9,48 +9,51 @@ public class CargoReceptionVm : BaseVm
 {
     public CargoReceptionVm()
     {
-        Cargos = new ObservableCollection<CargoModel>()
-        {
-            new CargoModel()
+        RawStaffs =
+        [
+            new RawStuff()
             {
                 Name = "Вапно"
-            },new CargoModel()
+            },
+            new RawStuff()
             {
                 Name = "Ячмінь"
-            },new CargoModel()
+            },
+            new RawStuff()
             {
                 Name = "Кукурудза"
-            },new CargoModel()
+            },
+            new RawStuff()
             {
                 Name = "Кісткове борошно"
-            },
-        };
+            }
+
+        ];
     }
 
-    public ObservableCollection<CargoModel> Cargos { get; set; }
+    public ObservableCollection<RawStuff> RawStaffs { get; set; }
     
-    private CargoModel _selectedCargo;
+    private RawStuff _selectedRawStuff;
 
-    public CargoModel SelectedCargo
+    public RawStuff SelectedRawStuff
     {
-        get => _selectedCargo;
-        set { _selectedCargo = value; }
+        get => _selectedRawStuff;
+        set { _selectedRawStuff = value; }
     }
     
-    public string SendedObject { get; set; }
-
-    public Command AddNewTypeCommand => new Command(async () =>
-    {
-        var r = await App.Current.MainPage.ShowPopupAsync(new AddItemPopup());
-        if (r is CargoModel cargo)
-        {
-            Cargos.Add(cargo);
-        }
-    });
-
-    public Command SendCommand => new Command(() =>
-    {
-        SendedObject = $"Об'єкт надіслано: {SelectedCargo.Name}-{SelectedCargo.Weight}кг";
-    });
+    
+    // public Command AddNewItemCommand => new Command(async () =>
+    // {
+    //     var r = await App.Current.MainPage.ShowPopupAsync(new AddItemPopup());
+    //     if (r is CargoModel cargo)
+    //     {
+    //         Cargos.Add(cargo);
+    //     }
+    // });
+    //
+    // public Command SendCommand => new Command(() =>
+    // {
+    //     SendedObject = $"Об'єкт надіслано: {SelectedCargo.Name}-{SelectedCargo.Weight}кг";
+    // });
 
 }
