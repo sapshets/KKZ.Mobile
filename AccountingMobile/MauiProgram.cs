@@ -21,9 +21,11 @@ public static class MauiProgram
             });
         builder.Services.AddTransient<CargoReceptionVm>();
         builder.Services.AddTransient<ReceiptVm>();
+        builder.Services.AddTransient<InvoiceVm>();
         
         builder.Services.AddTransient<CargoReceptionPage>();
         builder.Services.AddTransient<ReceiptPage>();
+        builder.Services.AddTransient<InvoicePage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

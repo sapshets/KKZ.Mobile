@@ -21,7 +21,7 @@ public partial class AddItemPopup
         {
             var item = new CargoModel()
             {
-                Name = NameText.Text
+                // Name = NameText.Text
             };
             Close(item);
         }

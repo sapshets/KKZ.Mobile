@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AccountingMobile")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+2eea4b4875de7a904b2699c372484b6eda4f6b3b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+c83796e2e537175ceae5985af949ce591e035750")]
 [assembly: System.Reflection.AssemblyProductAttribute("AccountingMobile")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AccountingMobile")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

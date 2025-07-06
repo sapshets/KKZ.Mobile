@@ -6,7 +6,8 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:entryField="clr-namespace:AccountingMobile.CustomControls.EntryField"
              x:Class="AccountingMobile.Views.CargoReceptionPage"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             x:Name="CargoReceptionRoot">
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="White" 
                                    StatusBarStyle="DarkContent" />
@@ -24,33 +25,45 @@
                              Source="add.svg"
                              HorizontalOptions="End"
                              VerticalOptions="Center"
-                             Command="{Binding AddNewTypeCommand}"
+                             Command="{Binding AddNewItemCommand}"
                              TintColor="{StaticResource Black}"/>
         </Grid>
         
     </Shell.TitleView>
     <ContentPage.Content>
-        <Grid Padding="18">
-            <Grid ColumnDefinitions="*,*"
-                  HorizontalOptions="Fill"
-                  VerticalOptions="Start">
-                <Picker Title="Оберіть елемент"
-                        ItemsSource="{Binding Cargos}"
-                        SelectedItem="{Binding SelectedCargo}"
-                        ItemDisplayBinding="{Binding Name}"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Center" />
-                <entryField:EntryField Grid.Column="1"
-                       Placeholder="Вага(кг)"
-                       Text="{Binding SelectedCargo.Weight}"
-                       InputType="Digit"/>
-            </Grid>
-            <Label Text="{Binding SendedObject}"
-                   TextColor="Black"
-                   FontSize="20"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"/>
-            <Button Text="Надіслати"
+        <Grid Padding="18"
+              RowDefinitions="*,auto">
+            <CollectionView ItemsSource="{Binding Cargos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*,auto"
+                              HorizontalOptions="Fill"
+                              VerticalOptions="Start"
+                              Padding="0,10">
+                            <Picker Title="Оберіть елемент" 
+                                    ItemsSource="{Binding BindingContext.RawStaffs,
+                                     Source={x:Reference CargoReceptionRoot}}"
+                                    SelectedItem="{Binding SelectedRawStuff}"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"/>
+                            <entryField:EntryField Grid.Column="1"
+                                                   Placeholder="Вага(кг)"
+                                                   Text="{Binding SelectedCargo.Weight, Mode=TwoWay}"
+                                                   InputType="Digit"/>
+                            <cc:TImageButton Grid.Column="2"
+                                             Margin="20,0,0,0"
+                                             Source="close.svg"
+                                             Command="{Binding BindingContext.DeleteCommand,
+                                     Source={x:Reference CargoReceptionRoot}}"
+                                             CommandParameter="{Binding .}"
+                                             TintColor="Black"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <Button Grid.Row="1" Text="Надіслати"
                     HorizontalOptions="Center"
                     VerticalOptions="End"
                     Command="{Binding SendCommand}"/>

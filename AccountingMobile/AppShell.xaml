@@ -8,9 +8,9 @@
     Shell.FlyoutBehavior="Disabled"
     Title="AccountingMobile"
     BackgroundColor="White">
-    <TabBar>
+    <TabBar x:Name="tabs" Route="tabs">
         <Tab Title="Вантаж" Icon="shipping.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:CargoReceptionPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:InvoicePage}" />
         </Tab>
         <Tab Title="Рецепт" Icon="receipt.png">
             <ShellContent ContentTemplate="{DataTemplate views:ReceiptPage}" />

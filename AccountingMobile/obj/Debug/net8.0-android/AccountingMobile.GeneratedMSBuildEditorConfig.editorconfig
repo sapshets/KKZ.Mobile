@@ -59,6 +59,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Views.Car
 build_metadata.AdditionalFiles.TargetPath = Views/CargoReceptionPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views/CargoReceptionPage.xaml
 
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/Views/InvoicePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Views.InvoicePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views/InvoicePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views/InvoicePage.xaml
+
 [/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/Views/ReceiptPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Views.ReceiptPage.xaml

@@ -2,6 +2,10 @@ namespace AccountingMobile.Models;
 
 public class CargoModel
 {
-    public string? Name { get; set; }
+    private RawStuff _selectedRawStuff;
+    private int _weight;
+
+    public RawStuff SelectedRawStuff { get; set; }
+
     public int Weight { get; set; }
 }
