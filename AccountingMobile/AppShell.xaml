@@ -8,6 +8,9 @@
     Shell.FlyoutBehavior="Disabled"
     Title="AccountingMobile"
     BackgroundColor="White">
+    <ShellContent Route="auth" 
+                  ContentTemplate="{DataTemplate views:AuthPage}" 
+                  Shell.NavBarIsVisible="False"/>
     <TabBar x:Name="tabs" Route="tabs">
         <Tab Title="Вантаж" Icon="shipping.svg">
             <ShellContent ContentTemplate="{DataTemplate views:InvoicePage}" />

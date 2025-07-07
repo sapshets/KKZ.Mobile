@@ -22,10 +22,12 @@ public static class MauiProgram
         builder.Services.AddTransient<CargoReceptionVm>();
         builder.Services.AddTransient<ReceiptVm>();
         builder.Services.AddTransient<InvoiceVm>();
+        builder.Services.AddTransient<AuthVm>();
         
         builder.Services.AddTransient<CargoReceptionPage>();
         builder.Services.AddTransient<ReceiptPage>();
         builder.Services.AddTransient<InvoicePage>();
+        builder.Services.AddTransient<AuthPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

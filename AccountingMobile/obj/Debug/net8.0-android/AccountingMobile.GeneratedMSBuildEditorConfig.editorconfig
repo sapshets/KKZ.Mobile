@@ -53,6 +53,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Resources
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Styles.xaml
 
+[/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/Views/AuthPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Views.AuthPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views/AuthPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views/AuthPage.xaml
+
 [/home/yaroslav/RiderProjects/KKZ.Mobile/AccountingMobile/Views/CargoReceptionPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AccountingMobile.Views.CargoReceptionPage.xaml
