@@ -7,20 +7,34 @@
              xmlns:entryField="clr-namespace:AccountingMobile.CustomControls.EntryField"
              x:Class="AccountingMobile.Views.CargoReceptionPage"
              BackgroundColor="White"
-             x:Name="CargoReceptionRoot">
+             x:Name="CargoReceptionRoot"
+             Shell.FlyoutBehavior="Flyout">
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="White" 
                                    StatusBarStyle="DarkContent" />
     </ContentPage.Behaviors>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False"/>
+    </Shell.BackButtonBehavior>
     <Shell.TitleView>
-        <Grid ColumnDefinitions="*,Auto,*"
-              Padding="20,0">
+        <Grid ColumnDefinitions="Auto,*,Auto"
+              Padding="5,0,20,0"
+              ColumnSpacing="20">
+            <cc:TImageButton Grid.Column="0"
+                             Source="back"
+                             TintColor="Black"
+                             HeightRequest="25"
+                             WidthRequest="25"
+                             HorizontalOptions="Start"
+                             Command="{Binding BackCommand}"/>
             <Label Grid.Column="1"
-                   Text="Прийом вантажу"
+                   Text="{Binding Invoice.InvoiceNumber}"
                    FontSize="20"
                    FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   LineBreakMode="TailTruncation"/>
             <cc:TImageButton Grid.Column="2"
                              Source="add.svg"
                              HorizontalOptions="End"

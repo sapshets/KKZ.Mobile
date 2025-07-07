@@ -10,7 +10,7 @@ public class BaseVm : INotifyPropertyChanged
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
-
+public Command BackCommand  => new Command(async () => await Shell.Current.GoToAsync(".."));
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

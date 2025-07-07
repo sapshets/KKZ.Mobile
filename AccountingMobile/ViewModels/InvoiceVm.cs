@@ -9,7 +9,7 @@ public class InvoiceVm
 
     public Command ContinueCommand => new Command( async () =>
     {
-        if (Invoice.InvoiceNumber == 0)
+        if (string.IsNullOrEmpty(Invoice.InvoiceNumber))
         {
             return;
         }

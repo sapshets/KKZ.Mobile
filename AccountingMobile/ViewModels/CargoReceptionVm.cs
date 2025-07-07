@@ -58,6 +58,11 @@ public class CargoReceptionVm : BaseVm, IQueryAttributable
     public Command SendCommand => new Command(() =>
     {
         var r = Cargos;
+        if (r.Any() && Invoice != null)
+        {
+            Invoice.Cargos.AddRange(r);
+        }
+        
     });
     public Command<CargoModel> DeleteCommand => new Command<CargoModel>((cargo) =>
     {

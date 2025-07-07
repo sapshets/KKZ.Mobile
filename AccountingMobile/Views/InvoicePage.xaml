@@ -4,8 +4,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:entryField="clr-namespace:AccountingMobile.CustomControls.EntryField"
              xmlns:customControls="clr-namespace:AccountingMobile.CustomControls"
-             x:Class="AccountingMobile.Views.InvoicePage"
-             Title="Прийом вантажу">
+             x:Class="AccountingMobile.Views.InvoicePage">
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*,Auto,*"
+              Padding="20,0">
+            <Label Grid.Column="1"
+                   Text="Прийом вантажу"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Grid>
+    </Shell.TitleView>
     <ContentPage.Content>
         <Grid RowDefinitions="*,Auto"
               Padding="20">
