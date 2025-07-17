@@ -4,6 +4,15 @@
         <name>AccountingMobile</name>
     </assembly>
     <members>
+        <member name="T:AccountingMobile.ViewModels.AuthVm">
+            <inheritdoc/>
+        </member>
+        <member name="F:AccountingMobile.ViewModels.AuthVm.loginCommand">
+            <summary>The backing field for <see cref="P:AccountingMobile.ViewModels.AuthVm.LoginCommand"/>.</summary>
+        </member>
+        <member name="P:AccountingMobile.ViewModels.AuthVm.LoginCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AccountingMobile.ViewModels.AuthVm.LoginAsync"/>.</summary>
+        </member>
         <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
             <summary>
             Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color

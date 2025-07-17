@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[9.1.1, )"
             },
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -65,6 +69,10 @@
               "target": "Package",
               "version": "[8.0.15, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "PropertyChanged.Fody": {
               "target": "Package",

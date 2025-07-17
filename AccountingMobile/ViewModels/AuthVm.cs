@@ -1,9 +1,25 @@
+using AccountingMobile.Services.ApiServices;
+using CommunityToolkit.Mvvm.Input;
+
 namespace AccountingMobile.ViewModels;
 
-public class AuthVm : BaseVm
+public partial class AuthVm(AuthService authService) : BaseVm
 {
-    public Command LoginCommand => new Command( async () =>
+    public string Username { get; set; }
+    public string Password { get; set; }
+    [RelayCommand]
+    private async Task LoginAsync()
     {
-       await Shell.Current.GoToAsync("//tabs");
-    });
+        bool success = await authService.LoginAsync(Username, Password);
+        if (success)
+        {
+            // Перехід на головну сторінку
+            await Shell.Current.GoToAsync("//tabs");
+        }
+        else
+        {
+            // Показати помилку
+            await Shell.Current.DisplayAlert("Помилка", "Неправильний логін або пароль", "OK");
+        }
+    }
 }

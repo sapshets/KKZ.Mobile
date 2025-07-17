@@ -29,6 +29,7 @@ public class CargoReceptionVm : BaseVm, IQueryAttributable
             }
 
         ];
+        AddNewItemCommand.Execute(null);
     }
 
     public InvoiceModel Invoice { get; set; }

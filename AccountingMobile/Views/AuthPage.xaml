@@ -6,9 +6,12 @@
              x:Class="AccountingMobile.Views.AuthPage">
     <ContentPage.Content>
         <VerticalStackLayout Spacing="20"
-                             Padding="20">
-        <entryField:EntryField Placeholder="Логін"/>
-        <entryField:EntryField Placeholder="Пароль"/>
+                             Padding="20"
+                             VerticalOptions="Center">
+        <entryField:EntryField Placeholder="Логін"
+                               Text="{Binding Username}"/>
+        <entryField:EntryField Placeholder="Пароль"
+                               Text="{Binding Password}"/>
         <Button Text="Увійти"
                 Command="{Binding LoginCommand}"/>
             

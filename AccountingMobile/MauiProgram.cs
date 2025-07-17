@@ -1,4 +1,5 @@
-﻿using AccountingMobile.ViewModels;
+﻿using AccountingMobile.Services.ApiServices;
+using AccountingMobile.ViewModels;
 using AccountingMobile.Views;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
@@ -28,6 +29,9 @@ public static class MauiProgram
         builder.Services.AddTransient<ReceiptPage>();
         builder.Services.AddTransient<InvoicePage>();
         builder.Services.AddTransient<AuthPage>();
+        
+        
+        builder.Services.AddSingleton<AuthService>();
 
 #if DEBUG
         builder.Logging.AddDebug();
