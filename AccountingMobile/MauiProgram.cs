@@ -3,6 +3,7 @@ using AccountingMobile.ViewModels;
 using AccountingMobile.Views;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Http;
 using Microsoft.Maui.Handlers;
 
 namespace AccountingMobile;
@@ -30,8 +31,19 @@ public static class MauiProgram
         builder.Services.AddTransient<InvoicePage>();
         builder.Services.AddTransient<AuthPage>();
         
+        var httpClient = new HttpClient
+        {
+            BaseAddress = new Uri(DeviceInfo.Platform == DevicePlatform.Android
+                ? Constants.API_KEY
+                : "http://localhost:5038/api/")
+        };
+
+        builder.Services.AddSingleton(httpClient);
         
         builder.Services.AddSingleton<AuthService>();
+        builder.Services.AddSingleton<RawStuffService>();
+        builder.Services.AddSingleton<InvoiceService>();
+
 
 #if DEBUG
         builder.Logging.AddDebug();

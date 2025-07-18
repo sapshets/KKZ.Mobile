@@ -1,9 +1,10 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AccountingMobile.ViewModels;
 
-public class BaseVm : INotifyPropertyChanged
+public class BaseVm : ObservableObject, INotifyPropertyChanged
 {
     internal BaseVm()
     {

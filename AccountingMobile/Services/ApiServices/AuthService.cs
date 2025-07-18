@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
@@ -7,9 +8,9 @@ public class AuthService
 {
     private readonly HttpClient _httpClient;
 
-    public AuthService()
+    public AuthService(HttpClient httpClient)
     {
-        _httpClient = new HttpClient();
+        _httpClient = httpClient;
     }
 
     // Метод для входу в систему
@@ -47,13 +48,42 @@ public class AuthService
     }
 
     // Метод для перевірки токена при запуску додатку
-    public async Task InitializeAsync()
+   
+    public async Task<bool> InitializeAsync()
     {
         var token = await SecureStorage.Default.GetAsync("jwt_token");
-        if (!string.IsNullOrEmpty(token))
+
+        if (IsTokenValid(token))
         {
+            // Якщо токен валідний, встановлюємо заголовок
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            await Shell.Current.GoToAsync("//tabs");
+            return true;
         }
-        await Shell.Current.GoToAsync("//tabs");
+        
+        // Якщо токен невалідний, чистимо сховище
+        Logout();
+        return false;
+    }
+    private bool IsTokenValid(string token)
+    {
+        if (string.IsNullOrEmpty(token))
+            return false;
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        try
+        {
+            // Нам не потрібно валідувати підпис на клієнті,
+            // тому ми просто читаємо токен, щоб дістати дату
+            var jwtToken = tokenHandler.ReadJwtToken(token);
+            
+            // Перевіряємо, чи не закінчився термін дії
+            return jwtToken.ValidTo > DateTime.UtcNow;
+        }
+        catch
+        {
+            // Якщо токен не вдалося прочитати, він невалідний
+            return false;
+        }
     }
 }

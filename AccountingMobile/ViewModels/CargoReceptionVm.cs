@@ -1,78 +1,115 @@
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using AccountingMobile.Models;
-using AccountingMobile.Popups;
-using CommunityToolkit.Maui.Views;
+using AccountingMobile.Services;
+using AccountingMobile.Services.ApiServices;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AccountingMobile.ViewModels;
 
-public class CargoReceptionVm : BaseVm, IQueryAttributable
+public partial class CargoReceptionVm : BaseVm, IQueryAttributable
 {
-    public CargoReceptionVm()
-    {
-        RawStaffs =
-        [
-            new RawStuff()
-            {
-                Name = "Вапно"
-            },
-            new RawStuff()
-            {
-                Name = "Ячмінь"
-            },
-            new RawStuff()
-            {
-                Name = "Кукурудза"
-            },
-            new RawStuff()
-            {
-                Name = "Кісткове борошно"
-            }
+    private readonly RawStuffService _rawStuffService;
+    private readonly InvoiceService _invoiceService;
+    [ObservableProperty]
+    private InvoiceModel _invoice;
 
-        ];
+    [ObservableProperty]
+    private ObservableCollection<RawStuff> _rawStaffs;
+
+    [ObservableProperty]
+    private ObservableCollection<CargoModel> _cargos;
+    
+    public CargoReceptionVm(RawStuffService rawStuffService, InvoiceService invoiceService)
+    {
+        _rawStuffService = rawStuffService;
+        _invoiceService = invoiceService;
+        Cargos = new ObservableCollection<CargoModel>();
+        RawStaffs = new ObservableCollection<RawStuff>();
+
         AddNewItemCommand.Execute(null);
     }
-
-    public InvoiceModel Invoice { get; set; }
-    public ObservableCollection<RawStuff> RawStaffs { get; set; }
     
-    private RawStuff _selectedRawStuff;
-
-    public RawStuff SelectedRawStuff
+    [RelayCommand]
+    private async Task LoadRawStuffsAsync()
     {
-        get => _selectedRawStuff;
-        set { _selectedRawStuff = value; }
+        try
+        {
+            var stuffs = await _rawStuffService.GetAllAsync();
+            RawStaffs.Clear();
+            foreach (var stuff in stuffs)
+            {
+                RawStaffs.Add(new RawStuff { Name = stuff.Name }); 
+            }
+        }
+        catch (Exception ex)
+        {
+            // Обробка помилки
+            Console.WriteLine($"Не вдалося завантажити сировину: {ex.Message}");
+        }
     }
 
-    public ObservableCollection<CargoModel> Cargos { get; set; } = new();
-    
-    public Command AddNewItemCommand => new Command(async () =>
+    [RelayCommand]
+    private void AddNewItem()
     {
-        Cargos.Add(new()
+        Cargos.Add(new CargoModel
         {
-            SelectedRawStuff = new RawStuff()
-            {
-                Name = ""
-            }
+            SelectedRawStuff = new RawStuff() { Name = "" }
         });
-    });
+    }
+
     
-    public Command SendCommand => new Command(() =>
+    [RelayCommand]
+    private async Task SendAsync()
     {
-        var r = Cargos;
-        if (r.Any() && Invoice != null)
+        if (!Cargos.Any() || Invoice == null)
         {
-            Invoice.Cargos.AddRange(r);
+            // Показати помилку, якщо немає вантажів
+            return;
         }
-        
-    });
-    public Command<CargoModel> DeleteCommand => new Command<CargoModel>((cargo) =>
+
+        // Додаємо зібрані вантажі до моделі накладної
+        Invoice.Cargos.Clear();
+        foreach (var cargo in Cargos)
+        {
+            Invoice.Cargos.Add(cargo);
+        }
+
+        try
+        {
+            // Викликаємо метод сервісу для відправки
+            var response = await _invoiceService.SendInvoiceAsync(Invoice);
+            if (response.IsSuccessStatusCode)
+            {
+                // Успіх! Повертаємось на попередню сторінку
+                await Shell.Current.GoToAsync("..");
+            }
+            else
+            {
+                // Обробка помилки від сервера
+                await Shell.Current.DisplayAlert("Помилка", "Не вдалося надіслати накладну.", "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Обробка помилки запиту
+            await Shell.Current.DisplayAlert("Помилка", $"Виникла помилка: {ex.Message}", "OK");
+        }
+    }
+    
+    [RelayCommand]
+    private void Delete(CargoModel cargo)
     {
-        Cargos.Remove(cargo);
-    });
-
-
-    public void ApplyQueryAttributes(IDictionary<string, object> query)
+        if (cargo != null)
+        {
+            Cargos.Remove(cargo);
+        }
+    }
+    
+    public async void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         Invoice = query["invoice"] as InvoiceModel;
+        await LoadRawStuffsAsync(); 
     }
 }

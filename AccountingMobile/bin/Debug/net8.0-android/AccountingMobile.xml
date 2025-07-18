@@ -13,6 +13,46 @@
         <member name="P:AccountingMobile.ViewModels.AuthVm.LoginCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AccountingMobile.ViewModels.AuthVm.LoginAsync"/>.</summary>
         </member>
+        <member name="T:AccountingMobile.ViewModels.CargoReceptionVm">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:AccountingMobile.ViewModels.CargoReceptionVm.Invoice">
+            <inheritdoc cref="F:AccountingMobile.ViewModels.CargoReceptionVm._invoice"/>
+        </member>
+        <member name="P:AccountingMobile.ViewModels.CargoReceptionVm.RawStaffs">
+            <inheritdoc cref="F:AccountingMobile.ViewModels.CargoReceptionVm._rawStaffs"/>
+        </member>
+        <member name="P:AccountingMobile.ViewModels.CargoReceptionVm.Cargos">
+            <inheritdoc cref="F:AccountingMobile.ViewModels.CargoReceptionVm._cargos"/>
+        </member>
+        <member name="F:AccountingMobile.ViewModels.CargoReceptionVm.loadRawStuffsCommand">
+            <summary>The backing field for <see cref="P:AccountingMobile.ViewModels.CargoReceptionVm.LoadRawStuffsCommand"/>.</summary>
+        </member>
+        <member name="P:AccountingMobile.ViewModels.CargoReceptionVm.LoadRawStuffsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AccountingMobile.ViewModels.CargoReceptionVm.LoadRawStuffsAsync"/>.</summary>
+        </member>
+        <member name="F:AccountingMobile.ViewModels.CargoReceptionVm.addNewItemCommand">
+            <summary>The backing field for <see cref="P:AccountingMobile.ViewModels.CargoReceptionVm.AddNewItemCommand"/>.</summary>
+        </member>
+        <member name="P:AccountingMobile.ViewModels.CargoReceptionVm.AddNewItemCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:AccountingMobile.ViewModels.CargoReceptionVm.AddNewItem"/>.</summary>
+        </member>
+        <member name="F:AccountingMobile.ViewModels.CargoReceptionVm.sendCommand">
+            <summary>The backing field for <see cref="P:AccountingMobile.ViewModels.CargoReceptionVm.SendCommand"/>.</summary>
+        </member>
+        <member name="P:AccountingMobile.ViewModels.CargoReceptionVm.SendCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AccountingMobile.ViewModels.CargoReceptionVm.SendAsync"/>.</summary>
+        </member>
+        <member name="F:AccountingMobile.ViewModels.CargoReceptionVm.deleteCommand">
+            <summary>The backing field for <see cref="P:AccountingMobile.ViewModels.CargoReceptionVm.DeleteCommand"/>.</summary>
+        </member>
+        <member name="P:AccountingMobile.ViewModels.CargoReceptionVm.DeleteCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:AccountingMobile.ViewModels.CargoReceptionVm.Delete(AccountingMobile.Models.CargoModel)"/>.</summary>
+        </member>
         <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
             <summary>
             Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
@@ -132,6 +172,36 @@
             <param name = "easing">The easing function to be used in the animation</param>
             <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
             <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Invoice">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Invoice" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.RawStaffs">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "RawStaffs" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Cargos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Cargos" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Invoice">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Invoice" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.RawStaffs">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "RawStaffs" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Cargos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Cargos" generated properties.</summary>
         </member>
     </members>
 </doc>
