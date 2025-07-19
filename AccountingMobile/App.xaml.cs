@@ -10,7 +10,7 @@ public partial class App : Application
         InitializeComponent();
 
         MainPage = new AppShell();
-        Task.Run( async () => await authService.InitializeAsync());
+        // Task.Run( async () => await authService.InitializeAsync());
         
     }
 }

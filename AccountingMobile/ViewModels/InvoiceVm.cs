@@ -9,18 +9,25 @@ public class InvoiceVm
 
     public Command ContinueCommand => new Command( async () =>
     {
-        if (string.IsNullOrEmpty(Invoice.InvoiceNumber))
+        try
         {
-            return;
-        }
-        var l = Shell.Current.CurrentState.Location.ToString();
-        Invoice.CreateDate = DateTime.Now;
-        Invoice.EmployeeId = 1;//TODO there is should be employee id after authorisation
+            if (string.IsNullOrEmpty(Invoice.InvoiceNumber))
+            {
+                return;
+            }
+            var l = Shell.Current.CurrentState.Location.ToString();
+            Invoice.CreateDate = DateTime.Now;
+            Invoice.EmployeeId = StaticData.UserId;
         
-        var navParam = new ShellNavigationQueryParameters
+            var navParam = new ShellNavigationQueryParameters
+            {
+                {"invoice", Invoice},
+            };
+            await Shell.Current.GoToAsync($"//tabs/{nameof(CargoReceptionPage)}",  navParam);
+        }
+        catch (Exception ex)
         {
-            {"invoice", Invoice},
-        };
-       await Shell.Current.GoToAsync($"{l}/{nameof(CargoReceptionPage)}",  navParam);
+            Console.WriteLine(ex);
+        }
     });
 }

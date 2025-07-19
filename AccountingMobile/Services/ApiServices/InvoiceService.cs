@@ -8,7 +8,7 @@ public class InvoiceService : BaseApiService<InvoiceListDto>
     public InvoiceService(HttpClient httpClient) : base(httpClient, "invoices") { }
 
     // <<< Додайте цей новий метод
-    public async Task<HttpResponseMessage> SendInvoiceAsync(InvoiceModel invoice)
+    public async Task<HttpResponseMessage> SendInvoiceAsync(object invoice)
     {
         return await _httpClient.PostAsJsonAsync("invoices", invoice);
     }

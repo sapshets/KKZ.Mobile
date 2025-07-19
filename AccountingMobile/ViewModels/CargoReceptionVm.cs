@@ -40,7 +40,7 @@ public partial class CargoReceptionVm : BaseVm, IQueryAttributable
             RawStaffs.Clear();
             foreach (var stuff in stuffs)
             {
-                RawStaffs.Add(new RawStuff { Name = stuff.Name }); 
+                RawStaffs.Add(new RawStuff { Name = stuff.Name, Id = stuff.Id}); 
             }
         }
         catch (Exception ex)
@@ -65,36 +65,47 @@ public partial class CargoReceptionVm : BaseVm, IQueryAttributable
     {
         if (!Cargos.Any() || Invoice == null)
         {
-            // Показати помилку, якщо немає вантажів
+            await Shell.Current.DisplayAlert("Помилка", "Неможливо надіслати порожню накладну.", "OK");
             return;
         }
 
-        // Додаємо зібрані вантажі до моделі накладної
-        Invoice.Cargos.Clear();
-        foreach (var cargo in Cargos)
+        // Перевіряємо, чи для кожного вантажу обрано сировину
+        if (Cargos.Any(c => c.SelectedRawStuff == null || c.SelectedRawStuff.Id == 0))
         {
-            Invoice.Cargos.Add(cargo);
+            await Shell.Current.DisplayAlert("Помилка", "Для кожного вантажу необхідно обрати сировину.", "OK");
+            return;
         }
+    
+        // --- Формуємо правильний об'єкт для відправки на API ---
+        var invoiceToSend = new 
+        {
+            Invoice.InvoiceNumber,
+            Invoice.EmployeeId,
+            // Створюємо список вантажів, який відповідає DTO на бекенді
+            Cargos = Cargos.Select(c => new 
+            {
+                Weight = c.Weight, // Припускаючи, що у CargoModel є властивість Weight
+                RawStuffId = c.SelectedRawStuff.Id // <<< Головна зміна: використовуємо ID обраної сировини
+            }).ToList()
+        };
 
         try
         {
-            // Викликаємо метод сервісу для відправки
-            var response = await _invoiceService.SendInvoiceAsync(Invoice);
+            // Відправляємо новостворений об'єкт
+            var response = await _invoiceService.SendInvoiceAsync(invoiceToSend); // Потрібно оновити SendInvoiceAsync
             if (response.IsSuccessStatusCode)
             {
-                // Успіх! Повертаємось на попередню сторінку
+                await Shell.Current.DisplayAlert("Успіх!", "Накладну успішно надіслано.", "OK");
                 await Shell.Current.GoToAsync("..");
             }
             else
             {
-                // Обробка помилки від сервера
                 await Shell.Current.DisplayAlert("Помилка", "Не вдалося надіслати накладну.", "OK");
             }
         }
         catch (Exception ex)
         {
-            // Обробка помилки запиту
-            await Shell.Current.DisplayAlert("Помилка", $"Виникла помилка: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Критична помилка", $"Виникла помилка: {ex.Message}", "OK");
         }
     }
     

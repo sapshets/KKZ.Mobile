@@ -10,8 +10,8 @@ public partial class AuthVm(AuthService authService) : BaseVm
     [RelayCommand]
     private async Task LoginAsync()
     {
-        bool success = await authService.LoginAsync(Username, Password);
-        if (success)
+        var res = await authService.LoginAsync(Username, Password);
+        if (res != null)
         {
             // Перехід на головну сторінку
             await Shell.Current.GoToAsync("//tabs");
